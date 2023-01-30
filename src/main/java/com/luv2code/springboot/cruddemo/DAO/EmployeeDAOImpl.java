@@ -20,7 +20,6 @@ public class EmployeeDAOImpl implements EmployeeDAO{
 	private EntityManager entityManager;
 
 	@Override
-	@Transactional
 	public List<Employee> findAll() {
 		
 		// get the current hibernate session
@@ -35,6 +34,40 @@ public class EmployeeDAOImpl implements EmployeeDAO{
 		
 		//return the results
 		return employees;
+	}
+
+	@Override
+	public Employee findOne(int id) {
+		
+		// get the current hibernate session
+		Session currentSession = entityManager.unwrap(Session.class);
+		
+		// get the employee
+		Employee theEmployee = currentSession.get(Employee.class, id);
+		
+		// return the employee
+		return theEmployee;
+	}
+
+	@Override
+	public void save(Employee theEmployee) {
+		
+		// get the current hibernate session
+		Session currentSession = entityManager.unwrap(Session.class);
+				
+		// get the employee: saveOrUpdate methos is depricated
+		currentSession.persist(theEmployee);
+		
+	}
+
+	@Override
+	public void deleteOne(int id) {
+		
+		// get the current hibernate session
+		Session currentSession = entityManager.unwrap(Session.class);
+				
+		// delete the employee
+		currentSession.remove(id);
 	}
 
 }
