@@ -55,7 +55,7 @@ public class EmployeeDAOImpl implements EmployeeDAO{
 		Session currentSession = entityManager.unwrap(Session.class);
 				
 		// get the employee: saveOrUpdate methos is depricated
-		currentSession.persist(theEmployee);
+		currentSession.saveOrUpdate(theEmployee);
 		
 	}
 
@@ -66,7 +66,7 @@ public class EmployeeDAOImpl implements EmployeeDAO{
 		Session currentSession = entityManager.unwrap(Session.class);
 				
 		// delete the employee
-		currentSession.remove(id);
+		currentSession.remove(currentSession.get(Employee.class, id));
 	}
 
 }
