@@ -9,22 +9,23 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.luv2code.springboot.cruddemo.DAO.EmployeeDAO;
 import com.luv2code.springboot.cruddemo.entity.Employee;
+import com.luv2code.springboot.cruddemo.service.EmployeeService;
 
 @RestController
 @RequestMapping("/api")
 public class EmployeeRestController {
 	
-	private EmployeeDAO eDAO;
+	private EmployeeService eService;
 	
 	//quick and dirty: inject employee dao directly
 	@Autowired
-	public EmployeeRestController(EmployeeDAO eDAO) {
-		this.eDAO = eDAO;
+	public EmployeeRestController(EmployeeService eService) {
+		this.eService = eService;
 	}
 	
 	//expose "/employees" and return list of employees
 	@GetMapping("/employees")
 	public List<Employee> findAll(){
-		return eDAO.findAll();
+		return eService.findAll();
 	}
 }
