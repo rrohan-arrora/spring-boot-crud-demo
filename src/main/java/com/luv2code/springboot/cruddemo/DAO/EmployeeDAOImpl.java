@@ -5,12 +5,14 @@ import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.luv2code.springboot.cruddemo.entity.Employee;
 
 import jakarta.persistence.EntityManager;
 
+@Repository
 public class EmployeeDAOImpl implements EmployeeDAO{
 	
 	//define field for entity manager
