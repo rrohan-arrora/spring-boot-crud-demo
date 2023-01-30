@@ -3,6 +3,7 @@ package com.luv2code.springboot.cruddemo.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import com.luv2code.springboot.cruddemo.DAO.EmployeeDAO;
@@ -15,6 +16,7 @@ public class EmployeeServiceImpl implements EmployeeService{
 
 	
 	@Autowired
+	@Qualifier("employeeDAOImpl_JPA_API") // added because of 2 DAO implementations
 	private EmployeeDAO employeeDao;
 	
 	@Override
